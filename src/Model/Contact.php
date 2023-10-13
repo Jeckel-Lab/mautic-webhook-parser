@@ -10,14 +10,14 @@ declare(strict_types=1);
 namespace JeckelLab\MauticWebhookParser\Model;
 
 use DateTimeImmutable;
-use JeckelLab\MauticWebhookParser\ValueObject\MauticEventType;
 
-readonly class MauticEvent
+readonly class Contact
 {
     public function __construct(
-        public MauticEventType $eventType,
-        public Contact $client,
-        public Lead $lead,
-        public DateTimeImmutable $timestamp
+        public DateTimeImmutable $dateAdded,
+        public DateTimeImmutable $dateIdentified,
+        public ?DateTimeImmutable $dateModified,
+        public int $id,
+        public bool $isPublished,
     ) {}
 }

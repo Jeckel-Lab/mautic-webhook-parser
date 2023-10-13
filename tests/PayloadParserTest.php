@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 
+use JeckelLab\MauticWebhookParser\ContactParser;
 use JeckelLab\MauticWebhookParser\PayloadParser;
 use JeckelLab\MauticWebhookParser\ValueObject\MauticEventType;
 use PHPUnit\Framework\TestCase;
@@ -16,14 +17,12 @@ class PayloadParserTest extends TestCase
 {
     public function testItExtractCorrectEvents(): void
     {
-        $parser = new PayloadParser();
-        $payload = [
-            "mautic.lead_post_save_new" => [
-                [
-                    "timestamp" => "2017-06-19T09:31:18+00:00",
-                ],
-            ],
-        ];
+        $parser = new PayloadParser(new ContactParser());
+        /** @var string $payloadString */
+        $payloadString = file_get_contents(__DIR__ . '/fixtures/contact-identified.json');
+
+        /** @var array<string, array<array<string, mixed>>> $payload */
+        $payload = json_decode($payloadString, true);
         $events = [];
         foreach($parser->parse($payload) as $event) {
             $events[] = $event;
