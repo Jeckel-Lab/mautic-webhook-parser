@@ -1,0 +1,91 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
+      - 'composer.json'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
+      - 'composer.json'
+
+jobs:
+  test:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php:
+          - "8.2"
+
+    env:
+      extensions: ctype, dom, intl, json, mbstring, openssl, xml, zip, zlib
+      key: cache-v1 # can be any string, change to clear the extension cache.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.extensions }}
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.extensions }}
+          tools: composer, pecl
+          coverage: xdebug
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: ramsey/composer-install@v2
+        with:
+          composer-options: "${{ matrix.composer-options }}"
+
+      - name: Setup Problem Matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Run PHPMD
+        run: vendor/bin/phpmd src,tests text ruleset.xml
+
+      - name: Run PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer check --diff --verbose
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --testdox --coverage-text
+
+      - name: Run Infection
+        run: vendor/bin/infection run
+
+      - name: Run Composer Require Checker
+        run: vendor/bin/composer-require-checker
+
+      - name: Run Roave Security Checker
+        run: composer update --dry-run roave/security-advisories

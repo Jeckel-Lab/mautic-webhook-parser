@@ -1,0 +1,13 @@
+/.build
+/tools
+/vendor
+
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/.phpunit.xml
+
+/composer.lock
+/phpstan.neon
+/phpunit.xml
+
+/.idea

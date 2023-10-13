@@ -1,0 +1,50 @@
+grumphp:
+  testsuites:
+    github_actions:
+      tasks:
+        - composer_require_checker
+        - phpmd
+        - phpstan
+        - phpcsfixer
+  tasks:
+    phpcsfixer:
+      allow_risky: ~
+      cache_file: ~
+      config: ~
+      rules:
+        line_ending: true
+        array_syntax:
+          syntax: short
+      using_cache: ~
+      config_contains_finder: false
+      verbose: true
+      diff: false
+      triggered_by: ['php']
+    phpmd:
+      whitelist_patterns:
+        - /^src\/(.*)/
+        - /^tests\/(.*)/
+      ruleset:
+        - ./ruleset.xml
+    phpunit:
+      config_file: ~
+      testsuite: ~
+      group: []
+      always_execute: false
+      order: null
+    phpstan:
+      configuration: phpstan.neon.dist
+      use_grumphp_paths: true
+    composer_require_checker:
+      composer_file: 'composer.json'
+      config_file: ~
+      ignore_parse_errors: false
+      triggered_by: [ 'composer.json', 'composer.lock', 'src/*.php' ]
+    git_branch_name:
+      whitelist:
+        - "feature/*"
+        - "bugfix/*"
+        - "hotfix/*"
+      additional_modifiers: ''
+      allow_detached_head: true
+    infection:
