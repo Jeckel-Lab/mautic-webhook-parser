@@ -1,1 +1,582 @@
-{"mautic.lead_post_save_new":[{"lead":{"isPublished":true,"dateAdded":"2017-06-19T09:31:18+00:00","dateModified":null,"createdBy":1,"createdByUser":"John Doe","modifiedBy":null,"modifiedByUser":null,"id":52,"points":0,"color":null,"fields":{"core":{"timezone1":{"id":46,"group":"core","label":"timezone","alias":"timezone1","type":"timezone","value":"Europe/Prague"},"datetime":{"id":45,"group":"core","label":"datetime","alias":"datetime","type":"datetime","value":""},"boolean":{"id":44,"group":"core","label":"boolean","alias":"boolean","type":"boolean","value":null},"f_select":{"id":43,"group":"core","label":"select","alias":"f_select","type":"select","value":null},"multiselect":{"id":42,"group":"core","label":"Multiselect","alias":"multiselect","type":"multiselect","value":"php|js"},"title":{"id":1,"group":"core","label":"Title","alias":"title","type":"lookup","value":"Mr."},"firstname":{"id":2,"group":"core","label":"First Name","alias":"firstname","type":"text","value":"John"},"lastname":{"id":3,"group":"core","label":"Last Name","alias":"lastname","type":"text","value":"Doe"},"company":{"id":4,"group":"core","label":"Company","alias":"company","type":"text","value":null},"position":{"id":5,"group":"core","label":"Position","alias":"position","type":"text","value":null},"email":{"id":6,"group":"core","label":"Email","alias":"email","type":"email","value":"john@doe.name"},"mobile":{"id":7,"group":"core","label":"Mobile","alias":"mobile","type":"tel","value":null},"phone":{"id":8,"group":"core","label":"Phone","alias":"phone","type":"tel","value":null},"fax":{"id":9,"group":"core","label":"Fax","alias":"fax","type":"tel","value":null},"address1":{"id":10,"group":"core","label":"Address Line 1","alias":"address1","type":"text","value":null},"address2":{"id":11,"group":"core","label":"Address Line 2","alias":"address2","type":"text","value":null},"city":{"id":12,"group":"core","label":"City","alias":"city","type":"text","value":"Prague"},"state":{"id":13,"group":"core","label":"State","alias":"state","type":"region","value":null},"zipcode":{"id":14,"group":"core","label":"Zip Code","alias":"zipcode","type":"text","value":"16000"},"country":{"id":15,"group":"core","label":"Country","alias":"country","type":"country","value":"Czech Republic"},"preferred_locale":{"id":16,"group":"core","label":"Preferred Locale","alias":"preferred_locale","type":"locale","value":"cs_CZ"},"attribution_date":{"id":17,"group":"core","label":"Attribution Date","alias":"attribution_date","type":"datetime","value":"2017-06-14 11:30:00"},"attribution":{"id":18,"group":"core","label":"Attribution","alias":"attribution","type":"number","value":32},"website":{"id":19,"group":"core","label":"Website","alias":"website","type":"url","value":null}},"social":{"facebook":{"id":20,"group":"social","label":"Facebook","alias":"facebook","type":"text","value":null},"foursquare":{"id":21,"group":"social","label":"Foursquare","alias":"foursquare","type":"text","value":null},"googleplus":{"id":22,"group":"social","label":"Google+","alias":"googleplus","type":"text","value":null},"instagram":{"id":23,"group":"social","label":"Instagram","alias":"instagram","type":"text","value":null},"linkedin":{"id":24,"group":"social","label":"LinkedIn","alias":"linkedin","type":"text","value":null},"skype":{"id":25,"group":"social","label":"Skype","alias":"skype","type":"text","value":null},"twitter":{"id":26,"group":"social","label":"Twitter","alias":"twitter","type":"text","value":null}},"personal":[],"professional":[]},"lastActive":null,"owner":{"createdByUser":null,"modifiedByUser":null,"id":1,"username":"admin","firstName":"John","lastName":"Doe"},"ipAddresses":[],"tags":[[]],"utmtags":null,"stage":null,"dateIdentified":"2017-06-19T09:31:18+00:00","preferredProfileImage":"gravatar","doNotContact":[],"frequencyRules":[]},"contact":{"isPublished":true,"dateAdded":"2017-06-19T09:31:18+00:00","dateModified":null,"createdBy":1,"createdByUser":"John Doe","modifiedBy":null,"modifiedByUser":null,"id":52,"points":0,"color":null,"fields":{"core":{"timezone1":{"id":46,"group":"core","label":"timezone","alias":"timezone1","type":"timezone","value":"Europe/Prague"},"datetime":{"id":45,"group":"core","label":"datetime","alias":"datetime","type":"datetime","value":""},"boolean":{"id":44,"group":"core","label":"boolean","alias":"boolean","type":"boolean","value":null},"f_select":{"id":43,"group":"core","label":"select","alias":"f_select","type":"select","value":null},"multiselect":{"id":42,"group":"core","label":"Multiselect","alias":"multiselect","type":"multiselect","value":"php|js"},"title":{"id":1,"group":"core","label":"Title","alias":"title","type":"lookup","value":"Mr."},"firstname":{"id":2,"group":"core","label":"First Name","alias":"firstname","type":"text","value":"John"},"lastname":{"id":3,"group":"core","label":"Last Name","alias":"lastname","type":"text","value":"Doe"},"company":{"id":4,"group":"core","label":"Company","alias":"company","type":"text","value":null},"position":{"id":5,"group":"core","label":"Position","alias":"position","type":"text","value":null},"email":{"id":6,"group":"core","label":"Email","alias":"email","type":"email","value":"john@doe.name"},"mobile":{"id":7,"group":"core","label":"Mobile","alias":"mobile","type":"tel","value":null},"phone":{"id":8,"group":"core","label":"Phone","alias":"phone","type":"tel","value":null},"fax":{"id":9,"group":"core","label":"Fax","alias":"fax","type":"tel","value":null},"address1":{"id":10,"group":"core","label":"Address Line 1","alias":"address1","type":"text","value":null},"address2":{"id":11,"group":"core","label":"Address Line 2","alias":"address2","type":"text","value":null},"city":{"id":12,"group":"core","label":"City","alias":"city","type":"text","value":"Prague"},"state":{"id":13,"group":"core","label":"State","alias":"state","type":"region","value":null},"zipcode":{"id":14,"group":"core","label":"Zip Code","alias":"zipcode","type":"text","value":"16000"},"country":{"id":15,"group":"core","label":"Country","alias":"country","type":"country","value":"Czech Republic"},"preferred_locale":{"id":16,"group":"core","label":"Preferred Locale","alias":"preferred_locale","type":"locale","value":"cs_CZ"},"attribution_date":{"id":17,"group":"core","label":"Attribution Date","alias":"attribution_date","type":"datetime","value":"2017-06-14 11:30:00"},"attribution":{"id":18,"group":"core","label":"Attribution","alias":"attribution","type":"number","value":32},"website":{"id":19,"group":"core","label":"Website","alias":"website","type":"url","value":null}},"social":{"facebook":{"id":20,"group":"social","label":"Facebook","alias":"facebook","type":"text","value":null},"foursquare":{"id":21,"group":"social","label":"Foursquare","alias":"foursquare","type":"text","value":null},"googleplus":{"id":22,"group":"social","label":"Google+","alias":"googleplus","type":"text","value":null},"instagram":{"id":23,"group":"social","label":"Instagram","alias":"instagram","type":"text","value":null},"linkedin":{"id":24,"group":"social","label":"LinkedIn","alias":"linkedin","type":"text","value":null},"skype":{"id":25,"group":"social","label":"Skype","alias":"skype","type":"text","value":null},"twitter":{"id":26,"group":"social","label":"Twitter","alias":"twitter","type":"text","value":null}},"personal":[],"professional":[]},"lastActive":null,"owner":{"createdByUser":null,"modifiedByUser":null,"id":1,"username":"admin","firstName":"John","lastName":"Doe"},"ipAddresses":[],"tags":[[]],"utmtags":null,"stage":null,"dateIdentified":"2017-06-19T09:31:18+00:00","preferredProfileImage":"gravatar","doNotContact":[],"frequencyRules":[]},"timestamp":"2017-06-19T09:31:18+00:00"}],"timestamp":"2023-10-13T14:38:45+00:00"}
+{
+    "mautic.lead_post_save_new": [
+        {
+            "contact": {
+                "color": null,
+                "createdBy": 1,
+                "createdByUser": "John Doe",
+                "dateAdded": "2017-06-19T09:31:18+00:00",
+                "dateIdentified": "2017-06-19T09:31:18+00:00",
+                "dateModified": null,
+                "doNotContact": [],
+                "fields": {
+                    "core": {
+                        "address1": {
+                            "alias": "address1",
+                            "group": "core",
+                            "id": 10,
+                            "label": "Address Line 1",
+                            "type": "text",
+                            "value": null
+                        },
+                        "address2": {
+                            "alias": "address2",
+                            "group": "core",
+                            "id": 11,
+                            "label": "Address Line 2",
+                            "type": "text",
+                            "value": null
+                        },
+                        "attribution": {
+                            "alias": "attribution",
+                            "group": "core",
+                            "id": 18,
+                            "label": "Attribution",
+                            "type": "number",
+                            "value": 32
+                        },
+                        "attribution_date": {
+                            "alias": "attribution_date",
+                            "group": "core",
+                            "id": 17,
+                            "label": "Attribution Date",
+                            "type": "datetime",
+                            "value": "2017-06-14 11:30:00"
+                        },
+                        "boolean": {
+                            "alias": "boolean",
+                            "group": "core",
+                            "id": 44,
+                            "label": "boolean",
+                            "type": "boolean",
+                            "value": null
+                        },
+                        "city": {
+                            "alias": "city",
+                            "group": "core",
+                            "id": 12,
+                            "label": "City",
+                            "type": "text",
+                            "value": "Prague"
+                        },
+                        "company": {
+                            "alias": "company",
+                            "group": "core",
+                            "id": 4,
+                            "label": "Company",
+                            "type": "text",
+                            "value": null
+                        },
+                        "country": {
+                            "alias": "country",
+                            "group": "core",
+                            "id": 15,
+                            "label": "Country",
+                            "type": "country",
+                            "value": "Czech Republic"
+                        },
+                        "datetime": {
+                            "alias": "datetime",
+                            "group": "core",
+                            "id": 45,
+                            "label": "datetime",
+                            "type": "datetime",
+                            "value": ""
+                        },
+                        "email": {
+                            "alias": "email",
+                            "group": "core",
+                            "id": 6,
+                            "label": "Email",
+                            "type": "email",
+                            "value": "john@doe.name"
+                        },
+                        "f_select": {
+                            "alias": "f_select",
+                            "group": "core",
+                            "id": 43,
+                            "label": "select",
+                            "type": "select",
+                            "value": null
+                        },
+                        "fax": {
+                            "alias": "fax",
+                            "group": "core",
+                            "id": 9,
+                            "label": "Fax",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "firstname": {
+                            "alias": "firstname",
+                            "group": "core",
+                            "id": 2,
+                            "label": "First Name",
+                            "type": "text",
+                            "value": "John"
+                        },
+                        "lastname": {
+                            "alias": "lastname",
+                            "group": "core",
+                            "id": 3,
+                            "label": "Last Name",
+                            "type": "text",
+                            "value": "Doe"
+                        },
+                        "mobile": {
+                            "alias": "mobile",
+                            "group": "core",
+                            "id": 7,
+                            "label": "Mobile",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "multiselect": {
+                            "alias": "multiselect",
+                            "group": "core",
+                            "id": 42,
+                            "label": "Multiselect",
+                            "type": "multiselect",
+                            "value": "php|js"
+                        },
+                        "phone": {
+                            "alias": "phone",
+                            "group": "core",
+                            "id": 8,
+                            "label": "Phone",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "position": {
+                            "alias": "position",
+                            "group": "core",
+                            "id": 5,
+                            "label": "Position",
+                            "type": "text",
+                            "value": null
+                        },
+                        "preferred_locale": {
+                            "alias": "preferred_locale",
+                            "group": "core",
+                            "id": 16,
+                            "label": "Preferred Locale",
+                            "type": "locale",
+                            "value": "cs_CZ"
+                        },
+                        "state": {
+                            "alias": "state",
+                            "group": "core",
+                            "id": 13,
+                            "label": "State",
+                            "type": "region",
+                            "value": null
+                        },
+                        "timezone1": {
+                            "alias": "timezone1",
+                            "group": "core",
+                            "id": 46,
+                            "label": "timezone",
+                            "type": "timezone",
+                            "value": "Europe/Prague"
+                        },
+                        "title": {
+                            "alias": "title",
+                            "group": "core",
+                            "id": 1,
+                            "label": "Title",
+                            "type": "lookup",
+                            "value": "Mr."
+                        },
+                        "website": {
+                            "alias": "website",
+                            "group": "core",
+                            "id": 19,
+                            "label": "Website",
+                            "type": "url",
+                            "value": null
+                        },
+                        "zipcode": {
+                            "alias": "zipcode",
+                            "group": "core",
+                            "id": 14,
+                            "label": "Zip Code",
+                            "type": "text",
+                            "value": "16000"
+                        }
+                    },
+                    "personal": [],
+                    "professional": [],
+                    "social": {
+                        "facebook": {
+                            "alias": "facebook",
+                            "group": "social",
+                            "id": 20,
+                            "label": "Facebook",
+                            "type": "text",
+                            "value": null
+                        },
+                        "foursquare": {
+                            "alias": "foursquare",
+                            "group": "social",
+                            "id": 21,
+                            "label": "Foursquare",
+                            "type": "text",
+                            "value": null
+                        },
+                        "googleplus": {
+                            "alias": "googleplus",
+                            "group": "social",
+                            "id": 22,
+                            "label": "Google+",
+                            "type": "text",
+                            "value": null
+                        },
+                        "instagram": {
+                            "alias": "instagram",
+                            "group": "social",
+                            "id": 23,
+                            "label": "Instagram",
+                            "type": "text",
+                            "value": null
+                        },
+                        "linkedin": {
+                            "alias": "linkedin",
+                            "group": "social",
+                            "id": 24,
+                            "label": "LinkedIn",
+                            "type": "text",
+                            "value": null
+                        },
+                        "skype": {
+                            "alias": "skype",
+                            "group": "social",
+                            "id": 25,
+                            "label": "Skype",
+                            "type": "text",
+                            "value": null
+                        },
+                        "twitter": {
+                            "alias": "twitter",
+                            "group": "social",
+                            "id": 26,
+                            "label": "Twitter",
+                            "type": "text",
+                            "value": null
+                        }
+                    }
+                },
+                "frequencyRules": [],
+                "id": 52,
+                "ipAddresses": [],
+                "isPublished": true,
+                "lastActive": null,
+                "modifiedBy": null,
+                "modifiedByUser": null,
+                "owner": {
+                    "createdByUser": null,
+                    "firstName": "John",
+                    "id": 1,
+                    "lastName": "Doe",
+                    "modifiedByUser": null,
+                    "username": "admin"
+                },
+                "points": 0,
+                "preferredProfileImage": "gravatar",
+                "stage": null,
+                "tags": [
+                    []
+                ],
+                "utmtags": null
+            },
+            "lead": {
+                "color": null,
+                "createdBy": 1,
+                "createdByUser": "John Doe",
+                "dateAdded": "2017-06-19T09:31:18+00:00",
+                "dateIdentified": "2017-06-19T09:31:18+00:00",
+                "dateModified": null,
+                "doNotContact": [],
+                "fields": {
+                    "core": {
+                        "address1": {
+                            "alias": "address1",
+                            "group": "core",
+                            "id": 10,
+                            "label": "Address Line 1",
+                            "type": "text",
+                            "value": null
+                        },
+                        "address2": {
+                            "alias": "address2",
+                            "group": "core",
+                            "id": 11,
+                            "label": "Address Line 2",
+                            "type": "text",
+                            "value": null
+                        },
+                        "attribution": {
+                            "alias": "attribution",
+                            "group": "core",
+                            "id": 18,
+                            "label": "Attribution",
+                            "type": "number",
+                            "value": 32
+                        },
+                        "attribution_date": {
+                            "alias": "attribution_date",
+                            "group": "core",
+                            "id": 17,
+                            "label": "Attribution Date",
+                            "type": "datetime",
+                            "value": "2017-06-14 11:30:00"
+                        },
+                        "boolean": {
+                            "alias": "boolean",
+                            "group": "core",
+                            "id": 44,
+                            "label": "boolean",
+                            "type": "boolean",
+                            "value": null
+                        },
+                        "city": {
+                            "alias": "city",
+                            "group": "core",
+                            "id": 12,
+                            "label": "City",
+                            "type": "text",
+                            "value": "Prague"
+                        },
+                        "company": {
+                            "alias": "company",
+                            "group": "core",
+                            "id": 4,
+                            "label": "Company",
+                            "type": "text",
+                            "value": null
+                        },
+                        "country": {
+                            "alias": "country",
+                            "group": "core",
+                            "id": 15,
+                            "label": "Country",
+                            "type": "country",
+                            "value": "Czech Republic"
+                        },
+                        "datetime": {
+                            "alias": "datetime",
+                            "group": "core",
+                            "id": 45,
+                            "label": "datetime",
+                            "type": "datetime",
+                            "value": ""
+                        },
+                        "email": {
+                            "alias": "email",
+                            "group": "core",
+                            "id": 6,
+                            "label": "Email",
+                            "type": "email",
+                            "value": "john@doe.name"
+                        },
+                        "f_select": {
+                            "alias": "f_select",
+                            "group": "core",
+                            "id": 43,
+                            "label": "select",
+                            "type": "select",
+                            "value": null
+                        },
+                        "fax": {
+                            "alias": "fax",
+                            "group": "core",
+                            "id": 9,
+                            "label": "Fax",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "firstname": {
+                            "alias": "firstname",
+                            "group": "core",
+                            "id": 2,
+                            "label": "First Name",
+                            "type": "text",
+                            "value": "John"
+                        },
+                        "lastname": {
+                            "alias": "lastname",
+                            "group": "core",
+                            "id": 3,
+                            "label": "Last Name",
+                            "type": "text",
+                            "value": "Doe"
+                        },
+                        "mobile": {
+                            "alias": "mobile",
+                            "group": "core",
+                            "id": 7,
+                            "label": "Mobile",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "multiselect": {
+                            "alias": "multiselect",
+                            "group": "core",
+                            "id": 42,
+                            "label": "Multiselect",
+                            "type": "multiselect",
+                            "value": "php|js"
+                        },
+                        "phone": {
+                            "alias": "phone",
+                            "group": "core",
+                            "id": 8,
+                            "label": "Phone",
+                            "type": "tel",
+                            "value": null
+                        },
+                        "position": {
+                            "alias": "position",
+                            "group": "core",
+                            "id": 5,
+                            "label": "Position",
+                            "type": "text",
+                            "value": null
+                        },
+                        "preferred_locale": {
+                            "alias": "preferred_locale",
+                            "group": "core",
+                            "id": 16,
+                            "label": "Preferred Locale",
+                            "type": "locale",
+                            "value": "cs_CZ"
+                        },
+                        "state": {
+                            "alias": "state",
+                            "group": "core",
+                            "id": 13,
+                            "label": "State",
+                            "type": "region",
+                            "value": null
+                        },
+                        "timezone1": {
+                            "alias": "timezone1",
+                            "group": "core",
+                            "id": 46,
+                            "label": "timezone",
+                            "type": "timezone",
+                            "value": "Europe/Prague"
+                        },
+                        "title": {
+                            "alias": "title",
+                            "group": "core",
+                            "id": 1,
+                            "label": "Title",
+                            "type": "lookup",
+                            "value": "Mr."
+                        },
+                        "website": {
+                            "alias": "website",
+                            "group": "core",
+                            "id": 19,
+                            "label": "Website",
+                            "type": "url",
+                            "value": null
+                        },
+                        "zipcode": {
+                            "alias": "zipcode",
+                            "group": "core",
+                            "id": 14,
+                            "label": "Zip Code",
+                            "type": "text",
+                            "value": "16000"
+                        }
+                    },
+                    "personal": [],
+                    "professional": [],
+                    "social": {
+                        "facebook": {
+                            "alias": "facebook",
+                            "group": "social",
+                            "id": 20,
+                            "label": "Facebook",
+                            "type": "text",
+                            "value": null
+                        },
+                        "foursquare": {
+                            "alias": "foursquare",
+                            "group": "social",
+                            "id": 21,
+                            "label": "Foursquare",
+                            "type": "text",
+                            "value": null
+                        },
+                        "googleplus": {
+                            "alias": "googleplus",
+                            "group": "social",
+                            "id": 22,
+                            "label": "Google+",
+                            "type": "text",
+                            "value": null
+                        },
+                        "instagram": {
+                            "alias": "instagram",
+                            "group": "social",
+                            "id": 23,
+                            "label": "Instagram",
+                            "type": "text",
+                            "value": null
+                        },
+                        "linkedin": {
+                            "alias": "linkedin",
+                            "group": "social",
+                            "id": 24,
+                            "label": "LinkedIn",
+                            "type": "text",
+                            "value": null
+                        },
+                        "skype": {
+                            "alias": "skype",
+                            "group": "social",
+                            "id": 25,
+                            "label": "Skype",
+                            "type": "text",
+                            "value": null
+                        },
+                        "twitter": {
+                            "alias": "twitter",
+                            "group": "social",
+                            "id": 26,
+                            "label": "Twitter",
+                            "type": "text",
+                            "value": null
+                        }
+                    }
+                },
+                "frequencyRules": [],
+                "id": 52,
+                "ipAddresses": [],
+                "isPublished": true,
+                "lastActive": null,
+                "modifiedBy": null,
+                "modifiedByUser": null,
+                "owner": {
+                    "createdByUser": null,
+                    "firstName": "John",
+                    "id": 1,
+                    "lastName": "Doe",
+                    "modifiedByUser": null,
+                    "username": "admin"
+                },
+                "points": 0,
+                "preferredProfileImage": "gravatar",
+                "stage": null,
+                "tags": [
+                    []
+                ],
+                "utmtags": null
+            },
+            "timestamp": "2017-06-19T09:31:18+00:00"
+        }
+    ],
+    "timestamp": "2023-10-13T14:38:45+00:00"
+}

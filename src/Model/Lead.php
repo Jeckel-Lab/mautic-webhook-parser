@@ -9,4 +9,4 @@ declare(strict_types=1);
 
 namespace JeckelLab\MauticWebhookParser\Model;
 
-class Client {}
+class Lead {}
