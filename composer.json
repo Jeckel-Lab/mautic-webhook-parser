@@ -9,8 +9,15 @@
             "email": "julien@jeckel-lab.fr"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Jeckel-Lab/etl"
+        }
+    ],
     "require": {
-        "php": "~8.2"
+        "php": "~8.2",
+        "jeckel-lab/etl": "dev-main"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.34",
