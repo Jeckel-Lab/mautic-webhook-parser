@@ -79,7 +79,7 @@ jobs:
         run: vendor/bin/phpstan
 
       - name: Run PHPUnit
-        run: vendor/bin/phpunit --testdox --coverage-text
+        run: vendor/bin/phpunit  --coverage-clover coverage.xml
 
       - name: Run Infection
         run: vendor/bin/infection run
@@ -89,3 +89,11 @@ jobs:
 
       - name: Run Roave Security Checker
         run: composer update --dry-run roave/security-advisories
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage.xml
+          flags: unittests # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
