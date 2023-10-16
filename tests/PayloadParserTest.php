@@ -7,6 +7,7 @@
 
 declare(strict_types=1);
 
+namespace JeckelLab\MauticWebhookParser\Tests;
 
 use JeckelLab\MauticWebhookParser\ContactParser;
 use JeckelLab\MauticWebhookParser\PayloadParser;
