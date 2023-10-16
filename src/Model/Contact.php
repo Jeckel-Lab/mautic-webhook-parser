@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace JeckelLab\MauticWebhookParser\Model;
 
 use DateTimeImmutable;
+use JeckelLab\MauticWebhookParser\Identity\ContactId;
 
 readonly class Contact
 {
@@ -17,7 +18,7 @@ readonly class Contact
         public DateTimeImmutable $dateAdded,
         public DateTimeImmutable $dateIdentified,
         public ?DateTimeImmutable $dateModified,
-        public int $id,
+        public ContactId $id,
         public bool $isPublished,
     ) {}
 }

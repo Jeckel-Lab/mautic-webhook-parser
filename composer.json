@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": "~8.2",
-        "jeckel-lab/etl": "dev-main"
+        "jeckel-lab/etl": "dev-main",
+        "jeckel-lab/identity-contract": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.34",
