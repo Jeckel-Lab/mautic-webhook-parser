@@ -9,7 +9,4 @@ declare(strict_types=1);
 
 namespace JeckelLab\MauticWebhookParser\Model\Contact;
 
-final readonly class CoreFields
-{
-
-}
+final readonly class CoreFields {}
