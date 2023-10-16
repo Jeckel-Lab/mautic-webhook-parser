@@ -15,8 +15,8 @@ readonly class User
 {
     public function __construct(
         public UserId $id,
-        public string $firstName,
-        public string $lastName,
+        public ?string $firstName,
+        public ?string $lastName,
         public string $username
     ) {}
 }

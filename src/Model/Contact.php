@@ -20,5 +20,7 @@ readonly class Contact
         public ?DateTimeImmutable $dateModified,
         public ContactId $id,
         public bool $isPublished,
+        public ?User $owner,
+        public int $points
     ) {}
 }

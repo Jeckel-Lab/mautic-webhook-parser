@@ -9,22 +9,59 @@ declare(strict_types=1);
 
 namespace JeckelLab\MauticWebhookParser\Builder;
 
-use JeckelLab\MauticWebhookParser\Exception\LogicException;
+use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Identity\UserId;
 use JeckelLab\MauticWebhookParser\Model\User;
 
 class UserBuilder
 {
-    /**
-     * @param array<string, mixed> $data
-     */
-    public function fromJsonArray(array $data): User
+    private ?UserId $id = null;
+    private ?string $firstName = null;
+    private ?string $lastName = null;
+    private ?string $username = null;
+
+    public function __construct()
     {
-        return new User(
-            id: is_int($data['id']) ? UserId::from($data['id']) : throw new LogicException(),
-            firstName: is_string($data['firstName']) ? $data['firstName'] : '',
-            lastName: is_string($data['lastName']) ? $data['lastName'] : '',
-            username: is_string($data['username']) ? $data['username'] : throw new LogicException()
+        $this->reset();
+    }
+
+    public function reset(): self
+    {
+        $this->id = null;
+        $this->firstName = null;
+        $this->lastName = null;
+        $this->username = null;
+        return $this;
+    }
+
+    public function withId(int|UserId $id): self
+    {
+        $this->id = is_int($id) ? UserId::from($id) : $id;
+        return $this;
+    }
+
+    public function withName(?string $firstName, ?string $lastName): self
+    {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    public function withUsername(string $username): self
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function build(): User
+    {
+        $user = new User(
+            id: $this->id ?? throw new InvalidArgumentException('Missing id'),
+            firstName: $this->firstName,
+            lastName: $this->lastName,
+            username: $this->username ?? throw new InvalidArgumentException('Missing username'),
         );
+        $this->reset();
+        return $user;
     }
 }
