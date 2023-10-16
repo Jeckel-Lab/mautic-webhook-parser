@@ -1,0 +1,287 @@
+{
+    "color": null,
+    "createdBy": 1,
+    "createdByUser": "John Doe",
+    "dateAdded": "2017-06-19T09:31:18+00:00",
+    "dateIdentified": "2017-06-19T09:31:18+00:00",
+    "dateModified": null,
+    "doNotContact": [],
+    "fields": {
+        "core": {
+            "address1": {
+                "alias": "address1",
+                "group": "core",
+                "id": 10,
+                "label": "Address Line 1",
+                "type": "text",
+                "value": null
+            },
+            "address2": {
+                "alias": "address2",
+                "group": "core",
+                "id": 11,
+                "label": "Address Line 2",
+                "type": "text",
+                "value": null
+            },
+            "attribution": {
+                "alias": "attribution",
+                "group": "core",
+                "id": 18,
+                "label": "Attribution",
+                "type": "number",
+                "value": 32
+            },
+            "attribution_date": {
+                "alias": "attribution_date",
+                "group": "core",
+                "id": 17,
+                "label": "Attribution Date",
+                "type": "datetime",
+                "value": "2017-06-14 11:30:00"
+            },
+            "boolean": {
+                "alias": "boolean",
+                "group": "core",
+                "id": 44,
+                "label": "boolean",
+                "type": "boolean",
+                "value": null
+            },
+            "city": {
+                "alias": "city",
+                "group": "core",
+                "id": 12,
+                "label": "City",
+                "type": "text",
+                "value": "Prague"
+            },
+            "company": {
+                "alias": "company",
+                "group": "core",
+                "id": 4,
+                "label": "Company",
+                "type": "text",
+                "value": null
+            },
+            "country": {
+                "alias": "country",
+                "group": "core",
+                "id": 15,
+                "label": "Country",
+                "type": "country",
+                "value": "Czech Republic"
+            },
+            "datetime": {
+                "alias": "datetime",
+                "group": "core",
+                "id": 45,
+                "label": "datetime",
+                "type": "datetime",
+                "value": ""
+            },
+            "email": {
+                "alias": "email",
+                "group": "core",
+                "id": 6,
+                "label": "Email",
+                "type": "email",
+                "value": "john@doe.name"
+            },
+            "f_select": {
+                "alias": "f_select",
+                "group": "core",
+                "id": 43,
+                "label": "select",
+                "type": "select",
+                "value": null
+            },
+            "fax": {
+                "alias": "fax",
+                "group": "core",
+                "id": 9,
+                "label": "Fax",
+                "type": "tel",
+                "value": null
+            },
+            "firstname": {
+                "alias": "firstname",
+                "group": "core",
+                "id": 2,
+                "label": "First Name",
+                "type": "text",
+                "value": "John"
+            },
+            "lastname": {
+                "alias": "lastname",
+                "group": "core",
+                "id": 3,
+                "label": "Last Name",
+                "type": "text",
+                "value": "Doe"
+            },
+            "mobile": {
+                "alias": "mobile",
+                "group": "core",
+                "id": 7,
+                "label": "Mobile",
+                "type": "tel",
+                "value": null
+            },
+            "multiselect": {
+                "alias": "multiselect",
+                "group": "core",
+                "id": 42,
+                "label": "Multiselect",
+                "type": "multiselect",
+                "value": "php|js"
+            },
+            "phone": {
+                "alias": "phone",
+                "group": "core",
+                "id": 8,
+                "label": "Phone",
+                "type": "tel",
+                "value": null
+            },
+            "position": {
+                "alias": "position",
+                "group": "core",
+                "id": 5,
+                "label": "Position",
+                "type": "text",
+                "value": null
+            },
+            "preferred_locale": {
+                "alias": "preferred_locale",
+                "group": "core",
+                "id": 16,
+                "label": "Preferred Locale",
+                "type": "locale",
+                "value": "cs_CZ"
+            },
+            "state": {
+                "alias": "state",
+                "group": "core",
+                "id": 13,
+                "label": "State",
+                "type": "region",
+                "value": null
+            },
+            "timezone1": {
+                "alias": "timezone1",
+                "group": "core",
+                "id": 46,
+                "label": "timezone",
+                "type": "timezone",
+                "value": "Europe/Prague"
+            },
+            "title": {
+                "alias": "title",
+                "group": "core",
+                "id": 1,
+                "label": "Title",
+                "type": "lookup",
+                "value": "Mr."
+            },
+            "website": {
+                "alias": "website",
+                "group": "core",
+                "id": 19,
+                "label": "Website",
+                "type": "url",
+                "value": null
+            },
+            "zipcode": {
+                "alias": "zipcode",
+                "group": "core",
+                "id": 14,
+                "label": "Zip Code",
+                "type": "text",
+                "value": "16000"
+            }
+        },
+        "personal": [],
+        "professional": [],
+        "social": {
+            "facebook": {
+                "alias": "facebook",
+                "group": "social",
+                "id": 20,
+                "label": "Facebook",
+                "type": "text",
+                "value": null
+            },
+            "foursquare": {
+                "alias": "foursquare",
+                "group": "social",
+                "id": 21,
+                "label": "Foursquare",
+                "type": "text",
+                "value": null
+            },
+            "googleplus": {
+                "alias": "googleplus",
+                "group": "social",
+                "id": 22,
+                "label": "Google+",
+                "type": "text",
+                "value": null
+            },
+            "instagram": {
+                "alias": "instagram",
+                "group": "social",
+                "id": 23,
+                "label": "Instagram",
+                "type": "text",
+                "value": null
+            },
+            "linkedin": {
+                "alias": "linkedin",
+                "group": "social",
+                "id": 24,
+                "label": "LinkedIn",
+                "type": "text",
+                "value": null
+            },
+            "skype": {
+                "alias": "skype",
+                "group": "social",
+                "id": 25,
+                "label": "Skype",
+                "type": "text",
+                "value": null
+            },
+            "twitter": {
+                "alias": "twitter",
+                "group": "social",
+                "id": 26,
+                "label": "Twitter",
+                "type": "text",
+                "value": null
+            }
+        }
+    },
+    "frequencyRules": [],
+    "id": 52,
+    "ipAddresses": [],
+    "isPublished": true,
+    "lastActive": null,
+    "modifiedBy": null,
+    "modifiedByUser": null,
+    "owner": {
+        "createdByUser": null,
+        "firstName": "John",
+        "id": 1,
+        "lastName": "Doe",
+        "modifiedByUser": null,
+        "username": "admin"
+    },
+    "points": 0,
+    "preferredProfileImage": "gravatar",
+    "stage": null,
+    "tags": [
+        []
+    ],
+    "utmtags": null
+}
