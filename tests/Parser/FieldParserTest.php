@@ -2,6 +2,7 @@
 
 namespace JeckelLab\MauticWebhookParser\Tests\Parser;
 
+use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\Parser\FieldParser;
 use PHPUnit\Framework\TestCase;
 
@@ -62,6 +63,37 @@ class FieldParserTest extends TestCase
             'id' => 18,
             'label' => 'Attribution',
             'type' => 'number',
+            'value' => null
+        ];
+
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertNull($parsedData);
+    }
+
+    public function testParseDatetimeFieldReturnDateTimeImmutable(): void
+    {
+        $data = [
+            'alias' => 'attribution_date',
+            'group' => 'core',
+            'id' => 17,
+            'label' => 'Attribution Date',
+            'type' => 'datetime',
+            'value' => "2017-06-14 11:30:00"
+        ];
+
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertInstanceOf(DateTimeImmutable::class, $parsedData);
+        self::assertEquals("2017-06-14 11:30:00", $parsedData->format('Y-m-d H:i:s'));
+    }
+
+    public function testParseDatetimeFieldWithNullValueReturnNull(): void
+    {
+        $data = [
+            'alias' => 'attribution_date',
+            'group' => 'core',
+            'id' => 17,
+            'label' => 'Attribution Date',
+            'type' => 'datetime',
             'value' => null
         ];
 

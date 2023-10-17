@@ -2,6 +2,9 @@
 
 namespace JeckelLab\MauticWebhookParser\Parser;
 
+use DateTimeImmutable;
+use function JeckelLab\MauticWebhookParser\toNullableDateTime;
+
 final readonly class FieldParser
 {
     /**
@@ -13,6 +16,7 @@ final readonly class FieldParser
         $field = match($fieldData['type']) {
             'text' => $this->parseTextField($fieldData['value']),
             'number' => $this->parseNumberField($fieldData['value']),
+            'datetime' => $this->parseDateTimeField($fieldData['value']),
             default => null
         };
         return $field;
@@ -26,5 +30,10 @@ final readonly class FieldParser
     private function parseNumberField(mixed $value): ?int
     {
         return is_int($value) ? $value : null;
+    }
+
+    private function parseDateTimeField(mixed $value): ?DateTimeImmutable
+    {
+        return toNullableDateTime($value);
     }
 }
