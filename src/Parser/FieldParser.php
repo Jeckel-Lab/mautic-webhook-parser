@@ -5,6 +5,7 @@ namespace JeckelLab\MauticWebhookParser\Parser;
 use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\ValueObject\Country;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
+use LogicException;
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
 
 final readonly class FieldParser
@@ -22,6 +23,14 @@ final readonly class FieldParser
             'boolean' => $this->parseBooleanField($fieldData['value']),
             'country' => $this->parseCountryField($fieldData['value']),
             'email' => $this->parseEmailField($fieldData['value']),
+            'select' => throw new LogicException('Field "select" not implemented'),
+            'tel' => throw new LogicException('Field "tel" not implemented'),
+            'multiselect' => throw new LogicException('Field "multiselect" not implemented'),
+            'locale' => throw new LogicException('Field "locale" not implemented'),
+            'region' => throw new LogicException('Field "region" not implemented'),
+            'timezone' => throw new LogicException('Field "timezone" not implemented'),
+            'lookup' => throw new LogicException('Field "lookup" not implemented'),
+            'url' => throw new LogicException('Field "url" not implemented'),
             default => null
         };
         return $field;
