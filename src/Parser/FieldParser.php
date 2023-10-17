@@ -3,6 +3,8 @@
 namespace JeckelLab\MauticWebhookParser\Parser;
 
 use DateTimeImmutable;
+use JeckelLab\MauticWebhookParser\ValueObject\Country;
+use JeckelLab\MauticWebhookParser\ValueObject\Email;
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
 
 final readonly class FieldParser
@@ -18,6 +20,8 @@ final readonly class FieldParser
             'number' => $this->parseNumberField($fieldData['value']),
             'datetime' => $this->parseDateTimeField($fieldData['value']),
             'boolean' => $this->parseBooleanField($fieldData['value']),
+            'country' => $this->parseCountryField($fieldData['value']),
+            'email' => $this->parseEmailField($fieldData['value']),
             default => null
         };
         return $field;
@@ -41,5 +45,15 @@ final readonly class FieldParser
     private function parseBooleanField(mixed $value): ?bool
     {
         return is_bool($value) ? $value : null;
+    }
+
+    private function parseCountryField(mixed $value): ?Country
+    {
+        return is_string($value) ? new Country($value): null;
+    }
+
+    private function parseEmailField(mixed $value): ?Email
+    {
+        return is_string($value) ? new Email($value) : null;
     }
 }
