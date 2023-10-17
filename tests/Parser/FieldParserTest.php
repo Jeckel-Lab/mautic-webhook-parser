@@ -100,4 +100,35 @@ class FieldParserTest extends TestCase
         $parsedData = (new FieldParser())->parseField($data);
         self::assertNull($parsedData);
     }
+
+    public function testParseBooleanFieldReturnBoolean(): void
+    {
+        $data = [
+            'alias' => 'boolean',
+            'group' => 'core',
+            'id' => 44,
+            'label' => 'boolean',
+            'type' => 'boolean',
+            'value' => false
+        ];
+
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertTrue(is_bool($parsedData));
+        self::assertFalse($parsedData);
+    }
+
+    public function testParseBooleanFieldWithNullValueReturnNull(): void
+    {
+        $data = [
+            'alias' => 'boolean',
+            'group' => 'core',
+            'id' => 44,
+            'label' => 'boolean',
+            'type' => 'boolean',
+            'value' => null
+        ];
+
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertNull($parsedData);
+    }
 }

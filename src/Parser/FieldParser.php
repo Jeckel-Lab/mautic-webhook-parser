@@ -17,6 +17,7 @@ final readonly class FieldParser
             'text' => $this->parseTextField($fieldData['value']),
             'number' => $this->parseNumberField($fieldData['value']),
             'datetime' => $this->parseDateTimeField($fieldData['value']),
+            'boolean' => $this->parseBooleanField($fieldData['value']),
             default => null
         };
         return $field;
@@ -35,5 +36,10 @@ final readonly class FieldParser
     private function parseDateTimeField(mixed $value): ?DateTimeImmutable
     {
         return toNullableDateTime($value);
+    }
+
+    private function parseBooleanField(mixed $value): ?bool
+    {
+        return is_bool($value) ? $value : null;
     }
 }
