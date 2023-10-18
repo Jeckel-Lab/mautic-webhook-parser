@@ -3,7 +3,6 @@
 namespace JeckelLab\MauticWebhookParser\Parser;
 
 use DateTimeImmutable;
-use JeckelLab\MauticWebhookParser\ValueObject\Country;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
 use LogicException;
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
@@ -16,24 +15,15 @@ final readonly class FieldParser
      */
     public function parseField(array $fieldData): mixed
     {
-        $field = match($fieldData['type']) {
-            'text' => $this->parseTextField($fieldData['value']),
+        return match($fieldData['type']) {
+            'country', 'locale', 'lookup', 'region', 'select', 'tel', 'text', 'timezone', 'url' => $this->parseTextField($fieldData['value']),
             'number' => $this->parseNumberField($fieldData['value']),
             'datetime' => $this->parseDateTimeField($fieldData['value']),
             'boolean' => $this->parseBooleanField($fieldData['value']),
-            'country' => $this->parseCountryField($fieldData['value']),
             'email' => $this->parseEmailField($fieldData['value']),
-            'select' => throw new LogicException('Field "select" not implemented'),
-            'tel' => throw new LogicException('Field "tel" not implemented'),
-            'multiselect' => throw new LogicException('Field "multiselect" not implemented'),
-            'locale' => throw new LogicException('Field "locale" not implemented'),
-            'region' => throw new LogicException('Field "region" not implemented'),
-            'timezone' => throw new LogicException('Field "timezone" not implemented'),
-            'lookup' => throw new LogicException('Field "lookup" not implemented'),
-            'url' => throw new LogicException('Field "url" not implemented'),
+            'multiselect' => $this->parseMultiselectField($fieldData['value']),
             default => null
         };
-        return $field;
     }
 
     private function parseTextField(mixed $value): ?string
@@ -56,13 +46,16 @@ final readonly class FieldParser
         return is_bool($value) ? $value : null;
     }
 
-    private function parseCountryField(mixed $value): ?Country
-    {
-        return is_string($value) ? new Country($value): null;
-    }
-
     private function parseEmailField(mixed $value): ?Email
     {
         return is_string($value) ? new Email($value) : null;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    private function parseMultiselectField(mixed $value): ?array
+    {
+        return is_string($value) ? explode('|', $value) : null;
     }
 }

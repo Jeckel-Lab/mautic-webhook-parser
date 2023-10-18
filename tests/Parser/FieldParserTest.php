@@ -4,8 +4,9 @@ namespace JeckelLab\MauticWebhookParser\Tests\Parser;
 
 use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\Parser\FieldParser;
-use JeckelLab\MauticWebhookParser\ValueObject\Country;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
+use PHPUnit\Framework\Attributes\TestDox;
+use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -13,33 +14,29 @@ use PHPUnit\Framework\TestCase;
  */
 class FieldParserTest extends TestCase
 {
-    public function testParseTextFieldReturnString(): void
+    #[TestWith(['country', 'my country value'])]
+    #[TestWith(['locale', 'fr_FR'])]
+    #[TestWith(['lookup', 'Mr.'])]
+    #[TestWith(['region', 'my region value'])]
+    #[TestWith(['select', 'my select value'])]
+    #[TestWith(['tel', '01 23 45 67 89'])]
+    #[TestWith(['text', 'my text value'])]
+    #[TestWith(['timezone', 'Europe/Paris'])]
+    #[TestWith(['url', 'https://jeckel-lab.fr'])]
+    #[TestDox('Parse field of type $type with value $value should return string')]
+    public function testParseFieldWhichShouldReturnString(string $type, string $value): void
     {
         $data = [
             'alias' => 'address1',
             'group' => 'core',
             'id' => 10,
             'label' => 'Address Line 1',
-            'type' => 'text',
-            'value' => '1 rue du pont'
+            'type' => $type,
+            'value' => $value
         ];
         $parsedData = (new FieldParser())->parseField($data);
-        self::assertTrue(is_string($parsedData));
-        self::assertSame('1 rue du pont', $parsedData);
-    }
-
-    public function testParseTextFieldWithNullValueReturnNull(): void
-    {
-        $data = [
-            'alias' => 'address1',
-            'group' => 'core',
-            'id' => 10,
-            'label' => 'Address Line 1',
-            'type' => 'text',
-            'value' => null
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertNull($parsedData);
+        self::assertIsString($parsedData);
+        self::assertSame($value, $parsedData);
     }
 
     public function testParseNumberFieldReturnInt(): void
@@ -53,22 +50,8 @@ class FieldParserTest extends TestCase
             'value' => 32
         ];
         $parsedData = (new FieldParser())->parseField($data);
-        self::assertTrue(is_int($parsedData));
+        self::assertIsInt($parsedData);
         self::assertSame(32, $parsedData);
-    }
-
-    public function testParseNumberFieldWithNullValueReturnNull(): void
-    {
-        $data = [
-            'alias' => 'attribution',
-            'group' => 'core',
-            'id' => 18,
-            'label' => 'Attribution',
-            'type' => 'number',
-            'value' => null
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertNull($parsedData);
     }
 
     public function testParseDatetimeFieldReturnDateTimeImmutable(): void
@@ -86,20 +69,6 @@ class FieldParserTest extends TestCase
         self::assertEquals("2017-06-14 11:30:00", $parsedData->format('Y-m-d H:i:s'));
     }
 
-    public function testParseDatetimeFieldWithNullValueReturnNull(): void
-    {
-        $data = [
-            'alias' => 'attribution_date',
-            'group' => 'core',
-            'id' => 17,
-            'label' => 'Attribution Date',
-            'type' => 'datetime',
-            'value' => null
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertNull($parsedData);
-    }
-
     public function testParseBooleanFieldReturnBoolean(): void
     {
         $data = [
@@ -111,51 +80,8 @@ class FieldParserTest extends TestCase
             'value' => false
         ];
         $parsedData = (new FieldParser())->parseField($data);
-        self::assertTrue(is_bool($parsedData));
+        self::assertIsBool($parsedData);
         self::assertFalse($parsedData);
-    }
-
-    public function testParseBooleanFieldWithNullValueReturnNull(): void
-    {
-        $data = [
-            'alias' => 'boolean',
-            'group' => 'core',
-            'id' => 44,
-            'label' => 'boolean',
-            'type' => 'boolean',
-            'value' => null
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertNull($parsedData);
-    }
-
-    public function testParseCountryFieldReturnCountry(): void
-    {
-        $data = [
-            'alias' => 'country',
-            'group' => 'core',
-            'id' => 15,
-            'label' => 'Country',
-            'type' => 'country',
-            'value' => "Czech Republic"
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertInstanceOf(Country::class, $parsedData);
-        self::assertSame("Czech Republic", $parsedData->country);
-    }
-
-    public function testParseCountryFieldWithNullValueReturnNull(): void
-    {
-        $data = [
-            'alias' => 'country',
-            'group' => 'core',
-            'id' => 15,
-            'label' => 'Country',
-            'type' => 'country',
-            'value' => null
-        ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertNull($parsedData);
     }
 
     public function testParseEmailFieldReturnEmail(): void
@@ -173,14 +99,44 @@ class FieldParserTest extends TestCase
         self::assertSame("john@doe.name", $parsedData->email);
     }
 
-    public function testParseEmailFieldWithNullValueReturnNull(): void
+    public function testParseFieldOfTypeMultiselectShouldReturnArray(): void
     {
         $data = [
-            'alias' => 'email',
+            'alias' => 'multiselect',
             'group' => 'core',
-            'id' => 6,
-            'label' => 'Email',
-            'type' => 'email',
+            'id' => 42,
+            'label' => 'Multiselect',
+            'type' => 'multiselect',
+            'value' => "php|js"
+        ];
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertIsArray($parsedData);
+        self::assertEquals(['php', 'js'], $parsedData);
+    }
+
+    #[TestWith(['boolean'])]
+    #[TestWith(['country'])]
+    #[TestWith(['datetime'])]
+    #[TestWith(['email'])]
+    #[TestWith(['locale'])]
+    #[TestWith(['lookup'])]
+    #[TestWith(['multiselect'])]
+    #[TestWith(['number'])]
+    #[TestWith(['region'])]
+    #[TestWith(['select'])]
+    #[TestWith(['tel'])]
+    #[TestWith(['text'])]
+    #[TestWith(['timezone'])]
+    #[TestWith(['url'])]
+    #[TestDox('Parse field of type $type with null value should return null')]
+    public function testParseFieldWithNullValueReturnNull(string $type): void
+    {
+        $data = [
+            'alias' => 'address1',
+            'group' => 'core',
+            'id' => 10,
+            'label' => 'Address Line 1',
+            'type' => $type,
             'value' => null
         ];
         $parsedData = (new FieldParser())->parseField($data);
