@@ -5,6 +5,7 @@ namespace JeckelLab\MauticWebhookParser\Tests\Parser;
 use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\Parser\FieldParser;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
+use JeckelLab\MauticWebhookParser\ValueObject\Locale;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
@@ -15,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 class FieldParserTest extends TestCase
 {
     #[TestWith(['country', 'my country value'])]
-    #[TestWith(['locale', 'fr_FR'])]
     #[TestWith(['lookup', 'Mr.'])]
     #[TestWith(['region', 'my region value'])]
     #[TestWith(['select', 'my select value'])]
@@ -97,6 +97,21 @@ class FieldParserTest extends TestCase
         $parsedData = (new FieldParser())->parseField($data);
         self::assertInstanceOf(Email::class, $parsedData);
         self::assertSame("john@doe.name", $parsedData->email);
+    }
+
+    public function testParseLocaleFieldReturnLocale(): void
+    {
+        $data = [
+            'alias' => 'preferred_locale',
+            'group' => 'core',
+            'id' => 6,
+            'label' => 'Preferred Locale',
+            'type' => 'locale',
+            'value' => "fr_FR"
+        ];
+        $parsedData = (new FieldParser())->parseField($data);
+        self::assertInstanceOf(Locale::class, $parsedData);
+        self::assertSame("fr_FR", $parsedData->locale);
     }
 
     public function testParseFieldOfTypeMultiselectShouldReturnArray(): void

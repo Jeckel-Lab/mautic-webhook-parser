@@ -4,6 +4,7 @@ namespace JeckelLab\MauticWebhookParser\Parser;
 
 use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
+use JeckelLab\MauticWebhookParser\ValueObject\Locale;
 use LogicException;
 
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
@@ -17,12 +18,13 @@ final readonly class FieldParser
     public function parseField(array $fieldData): mixed
     {
         return match($fieldData['type']) {
-            'country', 'locale', 'lookup', 'region', 'select', 'tel', 'text', 'timezone', 'url' => $this->parseTextField($fieldData['value']),
+            'country', 'lookup', 'region', 'select', 'tel', 'text', 'timezone', 'url' => $this->parseTextField($fieldData['value']),
             'number' => $this->parseNumberField($fieldData['value']),
             'datetime' => $this->parseDateTimeField($fieldData['value']),
             'boolean' => $this->parseBooleanField($fieldData['value']),
             'email' => $this->parseEmailField($fieldData['value']),
             'multiselect' => $this->parseMultiselectField($fieldData['value']),
+            'locale' => $this->parseLocaleField($fieldData['value']),
             default => null
         };
     }
@@ -58,5 +60,10 @@ final readonly class FieldParser
     private function parseMultiselectField(mixed $value): ?array
     {
         return is_string($value) ? explode('|', $value) : null;
+    }
+
+    private function parseLocaleField(mixed $value): ?Locale
+    {
+        return is_string($value) ? new Locale($value) : null;
     }
 }
