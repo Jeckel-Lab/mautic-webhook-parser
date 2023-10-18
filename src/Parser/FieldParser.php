@@ -5,6 +5,7 @@ namespace JeckelLab\MauticWebhookParser\Parser;
 use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
 use LogicException;
+
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
 
 final readonly class FieldParser
