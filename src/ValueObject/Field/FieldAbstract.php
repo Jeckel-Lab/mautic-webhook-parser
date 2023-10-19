@@ -23,4 +23,9 @@ abstract readonly class FieldAbstract implements Field
         public FieldType $type,
         public mixed $value
     ) {}
+
+    public function alias(): string
+    {
+        return $this->type->alias;
+    }
 }

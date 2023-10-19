@@ -14,20 +14,28 @@ use JeckelLab\MauticWebhookParser\ValueObject\FieldType;
 use JeckelLab\MauticWebhookParser\ValueObject\FieldTypeGroup;
 use JeckelLab\MauticWebhookParser\ValueObject\FieldTypeType;
 
-readonly class FieldTypeFactory
+class FieldTypeFactory
 {
+    /**
+     * @var array<int, FieldType>
+     */
+    private array $fieldTypes = [];
+
     /**
      * @param array{alias: string, group: string, id: int, label: string, type: string} $fieldData
      * @return FieldType
      */
     public function constructFromJson(array $fieldData): FieldType
     {
-        return new FieldType(
-            FieldTypeType::from($fieldData['type']),
-            $fieldData['alias'],
-            FieldTypeGroup::from($fieldData['group']),
-            FieldTypeId::from($fieldData['id']),
-            $fieldData['label']
-        );
+        if (! isset($this->fieldTypes[$fieldData['id']])) {
+            $this->fieldTypes[$fieldData['id']] = new FieldType(
+                FieldTypeType::from($fieldData['type']),
+                $fieldData['alias'],
+                FieldTypeGroup::from($fieldData['group']),
+                FieldTypeId::from($fieldData['id']),
+                $fieldData['label']
+            );
+        }
+        return $this->fieldTypes[$fieldData['id']];
     }
 }
