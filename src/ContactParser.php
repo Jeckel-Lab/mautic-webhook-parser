@@ -11,18 +11,18 @@ namespace JeckelLab\MauticWebhookParser;
 
 use Exception;
 use JeckelLab\MauticWebhookParser\Builder\ContactBuilder;
-use JeckelLab\MauticWebhookParser\Director\UserDirector;
+use JeckelLab\MauticWebhookParser\Factory\UserFactory;
 use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Exception\LogicException;
 use JeckelLab\MauticWebhookParser\Model\Contact;
 
 class ContactParser
 {
-    private UserDirector $userDirector;
+    private UserFactory $userDirector;
 
-    public function __construct(?UserDirector $userDirector = null)
+    public function __construct(?UserFactory $userDirector = null)
     {
-        $this->userDirector = $userDirector ?? new UserDirector();
+        $this->userDirector = $userDirector ?? new UserFactory();
     }
 
     /**

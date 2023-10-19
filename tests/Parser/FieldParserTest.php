@@ -2,10 +2,14 @@
 
 namespace JeckelLab\MauticWebhookParser\Tests\Parser;
 
-use DateTimeImmutable;
 use JeckelLab\MauticWebhookParser\Parser\FieldParser;
-use JeckelLab\MauticWebhookParser\ValueObject\Email;
-use JeckelLab\MauticWebhookParser\ValueObject\Locale;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\ArrayField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\BoolField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\DateTimeField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\EmailField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\IntField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\LocaleField;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\StringField;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
@@ -34,9 +38,9 @@ class FieldParserTest extends TestCase
             'type' => $type,
             'value' => $value
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertIsString($parsedData);
-        self::assertSame($value, $parsedData);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(StringField::class, $parsedData);
+        self::assertSame($value, $parsedData->value);
     }
 
     public function testParseNumberFieldReturnInt(): void
@@ -49,9 +53,9 @@ class FieldParserTest extends TestCase
             'type' => 'number',
             'value' => 32
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertIsInt($parsedData);
-        self::assertSame(32, $parsedData);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(IntField::class, $parsedData);
+        self::assertSame(32, $parsedData->value);
     }
 
     public function testParseDatetimeFieldReturnDateTimeImmutable(): void
@@ -64,9 +68,9 @@ class FieldParserTest extends TestCase
             'type' => 'datetime',
             'value' => "2017-06-14 11:30:00"
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertInstanceOf(DateTimeImmutable::class, $parsedData);
-        self::assertEquals("2017-06-14 11:30:00", $parsedData->format('Y-m-d H:i:s'));
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(DateTimeField::class, $parsedData);
+        self::assertEquals("2017-06-14 11:30:00", $parsedData->value->format('Y-m-d H:i:s'));
     }
 
     public function testParseBooleanFieldReturnBoolean(): void
@@ -79,9 +83,9 @@ class FieldParserTest extends TestCase
             'type' => 'boolean',
             'value' => false
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertIsBool($parsedData);
-        self::assertFalse($parsedData);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(BoolField::class, $parsedData);
+        self::assertFalse($parsedData->value);
     }
 
     public function testParseEmailFieldReturnEmail(): void
@@ -94,9 +98,9 @@ class FieldParserTest extends TestCase
             'type' => 'email',
             'value' => "john@doe.name"
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertInstanceOf(Email::class, $parsedData);
-        self::assertSame("john@doe.name", $parsedData->email);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(EmailField::class, $parsedData);
+        self::assertSame("john@doe.name", $parsedData->value->email);
     }
 
     public function testParseLocaleFieldReturnLocale(): void
@@ -109,9 +113,9 @@ class FieldParserTest extends TestCase
             'type' => 'locale',
             'value' => "fr_FR"
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertInstanceOf(Locale::class, $parsedData);
-        self::assertSame("fr_FR", $parsedData->locale);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(LocaleField::class, $parsedData);
+        self::assertSame("fr_FR", $parsedData->value->locale);
     }
 
     public function testParseFieldOfTypeMultiselectShouldReturnArray(): void
@@ -124,9 +128,9 @@ class FieldParserTest extends TestCase
             'type' => 'multiselect',
             'value' => "php|js"
         ];
-        $parsedData = (new FieldParser())->parseField($data);
-        self::assertIsArray($parsedData);
-        self::assertEquals(['php', 'js'], $parsedData);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
+        self::assertInstanceOf(ArrayField::class, $parsedData);
+        self::assertEquals(['php', 'js'], $parsedData->value);
     }
 
     #[TestWith(['boolean'])]
@@ -154,7 +158,7 @@ class FieldParserTest extends TestCase
             'type' => $type,
             'value' => null
         ];
-        $parsedData = (new FieldParser())->parseField($data);
+        $parsedData = (new FieldParser())->parseFieldValue($data);
         self::assertNull($parsedData);
     }
 }

@@ -7,13 +7,13 @@
 
 declare(strict_types=1);
 
-namespace JeckelLab\MauticWebhookParser\Director;
+namespace JeckelLab\MauticWebhookParser\Factory;
 
 use JeckelLab\MauticWebhookParser\Builder\UserBuilder;
 use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Model\User;
 
-class UserDirector
+class UserFactory
 {
     private UserBuilder $userBuilder;
 
