@@ -9,9 +9,10 @@ declare(strict_types=1);
 
 namespace JeckelLab\MauticWebhookParser\Model;
 
+use Countable;
 use JeckelLab\MauticWebhookParser\ValueObject\Field\Field;
 
-readonly class FieldCollection
+readonly class FieldCollection implements Countable
 {
     /**
      * @param array<string, Field> $fields
@@ -21,5 +22,10 @@ readonly class FieldCollection
     public function __get(string $name): ?Field
     {
         return $this->fields[$name] ?? null;
+    }
+
+    public function count(): int
+    {
+        return count($this->fields);
     }
 }

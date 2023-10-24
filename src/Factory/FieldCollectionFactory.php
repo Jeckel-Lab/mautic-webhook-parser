@@ -27,14 +27,14 @@ class FieldCollectionFactory
     }
 
     /**
-     * @param array{fields: array<string, mixed>} $jsonData
+     * @param array<string, mixed> $jsonData
      * @return FieldCollection
      */
     public function constructFromJson(array $jsonData): FieldCollection
     {
         $this->fieldCollectionBuilder->reset();
         /** @var array{alias: string, group: string, id: int, label: string, type: string, value: mixed} $fieldData */
-        foreach ($jsonData['fields'] as $fieldData) {
+        foreach ($jsonData as $fieldData) {
             $field = $this->fieldParser->parseFieldValue($fieldData);
             if (null === $field) {
                 continue;
