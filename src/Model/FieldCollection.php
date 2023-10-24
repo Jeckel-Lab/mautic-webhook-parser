@@ -19,7 +19,7 @@ readonly class FieldCollection implements Countable
      */
     public function __construct(private array $fields) {}
 
-    public function __get(string $name): ?Field
+    public function get(string $name): ?Field
     {
         return $this->fields[$name] ?? null;
     }
