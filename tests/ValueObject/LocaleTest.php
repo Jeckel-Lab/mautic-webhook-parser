@@ -15,15 +15,19 @@ use PHPUnit\Framework\TestCase;
 
 class LocaleTest extends TestCase
 {
-    #[TestWith(['fr_FR'])]
-    #[TestWith(['fr_CA'])]
-    #[TestWith(['en_US'])]
-    #[TestWith(['en_GB'])]
-    #[TestDox('Create locale $localeToTest with should return Locale instance')]
-    public function testValidLocaleShouldReturnLocaleInstance(string $localeToTest): void
+    #[TestWith(['fr_FR', 'fr_FR'])]
+    #[TestWith(['fr_CA', 'fr_CA'])]
+    #[TestWith(['en_US', 'en_US'])]
+    #[TestWith(['en_GB', 'en_GB'])]
+    #[TestWith(['de-DE', 'de_DE'])]
+    #[TestWith(['de-CH', 'de_CH'])]
+    #[TestWith(['fr_CA.ISO-8895-1@euro', 'fr_CA'])]
+    #[TestWith(['fr-CA-u-ca-gregorian-nu-arab', 'fr_CA'])]
+    #[TestDox('Create locale $localeToTest with should return Locale instance with $expected value')]
+    public function testValidLocaleShouldReturnLocaleInstance(string $localeToTest, string $expected): void
     {
-        $locale = new Locale($localeToTest);
-        self::assertSame($localeToTest, $locale->locale);
+        $locale = Locale::from($localeToTest);
+        self::assertSame($expected, $locale->locale);
     }
 
     #[TestWith(['fr_DE'])]
@@ -33,6 +37,14 @@ class LocaleTest extends TestCase
     public function testWithInvalidLocaleShouldFail(string $localeToTest): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new Locale($localeToTest);
+        Locale::from($localeToTest);
+    }
+
+    public function testInstantiateTwiceSameLocaleReturnsSameInstance(): void
+    {
+        self::assertSame(
+            Locale::from('fr_CA'),
+            Locale::from('fr-CA-u-ca-gregorian-nu-arab')
+        );
     }
 }
