@@ -24,4 +24,9 @@ readonly class Contact
         public int $points,
         public FieldCollection $fields,
     ) {}
+
+    public function __get(string $alias): mixed
+    {
+        return $this->fields->get($alias)?->value();
+    }
 }

@@ -46,6 +46,14 @@ abstract readonly class FieldAbstract implements Field, Stringable
         return $this->type->alias;
     }
 
+    /**
+     * @return FieldValueType
+     */
+    public function value(): mixed
+    {
+        return $this->value;
+    }
+
     public function __toString(): string
     {
         return (string) $this->value;
