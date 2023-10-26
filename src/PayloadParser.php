@@ -12,6 +12,7 @@ namespace JeckelLab\MauticWebhookParser;
 use DateTimeImmutable;
 use Exception;
 use JeckelLab\MauticWebhookParser\Exception\LogicException;
+use JeckelLab\MauticWebhookParser\Factory\ContactFactory;
 use JeckelLab\MauticWebhookParser\Model\Lead;
 use JeckelLab\MauticWebhookParser\Model\MauticEvent;
 use JeckelLab\MauticWebhookParser\ValueObject\MauticEventType;
@@ -19,7 +20,7 @@ use JeckelLab\MauticWebhookParser\ValueObject\MauticEventType;
 class PayloadParser
 {
     public function __construct(
-        private readonly ContactParser $clientParser,
+        private readonly ContactFactory $clientParser,
     ) {}
 
     /**
@@ -56,7 +57,7 @@ class PayloadParser
         $contactPayload = $eventPayload['contact'];
         return new MauticEvent(
             eventType: $event,
-            client: $this->clientParser->parse($contactPayload),
+            client: $this->clientParser->constructFromJson($contactPayload),
             lead: new Lead(),
             timestamp: new DateTimeImmutable($eventPayload['timestamp'])
         );

@@ -7,22 +7,26 @@
 
 declare(strict_types=1);
 
-namespace JeckelLab\MauticWebhookParser;
+namespace JeckelLab\MauticWebhookParser\Factory;
 
 use Exception;
 use JeckelLab\MauticWebhookParser\Builder\ContactBuilder;
-use JeckelLab\MauticWebhookParser\Director\UserDirector;
 use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Exception\LogicException;
 use JeckelLab\MauticWebhookParser\Model\Contact;
 
-class ContactParser
-{
-    private UserDirector $userDirector;
+use function JeckelLab\MauticWebhookParser\toDateTime;
+use function JeckelLab\MauticWebhookParser\toNullableDateTime;
 
-    public function __construct(?UserDirector $userDirector = null)
+class ContactFactory
+{
+    private UserFactory $userFactory;
+    private FieldCollectionFactory $fieldsFactory;
+
+    public function __construct(?UserFactory $userFactory = null, ?FieldCollectionFactory $fieldsFactory = null)
     {
-        $this->userDirector = $userDirector ?? new UserDirector();
+        $this->userFactory = $userFactory ?? new UserFactory();
+        $this->fieldsFactory = $fieldsFactory ?? new FieldCollectionFactory();
     }
 
     /**
@@ -30,14 +34,20 @@ class ContactParser
      * @return Contact
      * @throws Exception|LogicException
      */
-    public function parse(array $payload): Contact
+    public function constructFromJson(array $payload): Contact
     {
         $owner = null;
         if (is_array($payload["owner"])) {
             /** @var array<string, mixed> $ownerData */
             $ownerData = $payload["owner"];
-            $owner = $this->userDirector->constructFromJson($ownerData);
+            $owner = $this->userFactory->constructFromJson($ownerData);
         }
+        if (! is_array($payload['fields'])) {
+            throw new InvalidArgumentException('Missing fields');
+        }
+        /** @var array<string, mixed> $fieldsData */
+        $fieldsData = $payload['fields'];
+        $fields = $this->fieldsFactory->constructFromJson($fieldsData);
 
         return (new ContactBuilder())
             ->withId(
@@ -51,6 +61,7 @@ class ContactParser
                 toDateTime($payload['dateIdentified']),
                 toNullableDateTime($payload['dateModified'])
             )
+            ->withFields($fields)
             ->build();
     }
 }

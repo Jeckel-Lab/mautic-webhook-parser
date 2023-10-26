@@ -63,7 +63,7 @@
         "analyze": "@analyse",
         "cs-fix": "vendor/bin/php-cs-fixer fix --diff --verbose",
         "phpmd": "vendor/bin/phpmd src,tests text ruleset.xml",
-        "test": "vendor/bin/phpunit --testdox",
+        "test": "vendor/bin/phpunit --testdox --display-warnings",
         "test-coverage": [
             "Composer\\Config::disableProcessTimeout",
             "XDEBUG_MODE=coverage vendor/bin/phpunit --testdox --coverage-html=.build/coverage"
