@@ -4,6 +4,7 @@ namespace JeckelLab\MauticWebhookParser\Tests\Factory;
 
 use JeckelLab\MauticWebhookParser\Factory\FieldCollectionFactory;
 use JeckelLab\MauticWebhookParser\Identity\FieldTypeId;
+use JeckelLab\MauticWebhookParser\ValueObject\Field\LocaleField;
 use JeckelLab\MauticWebhookParser\ValueObject\Field\StringField;
 use JeckelLab\MauticWebhookParser\ValueObject\FieldTypeGroup;
 use PHPUnit\Framework\TestCase;
@@ -15,6 +16,7 @@ class FieldCollectionFactoryTest extends TestCase
         $data = [];
         $collection = (new FieldCollectionFactory())->constructFromJson($data);
         self::assertCount(0, $collection);
+        self::assertNull($collection->get('address1'));
     }
 
     public function testFactoryWithSingleFieldShouldReturnCollection(): void
@@ -38,5 +40,30 @@ class FieldCollectionFactoryTest extends TestCase
         self::assertSame(FieldTypeId::from(10), $field->id);
         self::assertSame('Address Line 1', $field->label);
         self::assertSame('1 rue du port', $field->value);
+    }
+
+    public function testFactoryWithLocalFieldsShouldReturnCollection(): void
+    {
+        $data = [
+            'preferred_locale' => [
+                'alias' => 'preferred_locale',
+                'group' => 'core',
+                'id' => 16,
+                'label' => 'Preferred Locale',
+                'type' => 'locale',
+                'value' => 'fr_FR'
+            ]
+        ];
+        $collection = (new FieldCollectionFactory())->constructFromJson($data);
+        self::assertCount(1, $collection);
+        self::assertNull($collection->get('address1'));
+
+        $field = $collection->get('preferred_locale');
+        self::assertInstanceOf(LocaleField::class, $field);
+        self::assertSame('preferred_locale', $field->alias);
+        self::assertSame(FieldTypeGroup::CORE, $field->group);
+        self::assertSame(FieldTypeId::from(16), $field->id);
+        self::assertSame('Preferred Locale', $field->label);
+        self::assertSame('fr_FR', (string) $field->value);
     }
 }

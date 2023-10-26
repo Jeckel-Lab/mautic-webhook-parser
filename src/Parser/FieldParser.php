@@ -82,6 +82,6 @@ final readonly class FieldParser
 
     private function parseLocaleField(mixed $value, FieldType $fieldType): ?LocaleField
     {
-        return is_string($value) ? new LocaleField($fieldType, new Locale($value)) : null;
+        return is_string($value) ? new LocaleField($fieldType, Locale::from($value)) : null;
     }
 }

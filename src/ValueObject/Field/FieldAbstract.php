@@ -13,6 +13,7 @@ use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Identity\FieldTypeId;
 use JeckelLab\MauticWebhookParser\ValueObject\FieldType;
 use JeckelLab\MauticWebhookParser\ValueObject\FieldTypeGroup;
+use Stringable;
 
 /**
  * @template FieldValueType
@@ -21,7 +22,7 @@ use JeckelLab\MauticWebhookParser\ValueObject\FieldTypeGroup;
  * @property FieldTypeId $id
  * @property string $label
  */
-abstract readonly class FieldAbstract implements Field
+abstract readonly class FieldAbstract implements Field, Stringable
 {
     /**
      * @param FieldValueType $value
@@ -43,5 +44,10 @@ abstract readonly class FieldAbstract implements Field
     public function alias(): string
     {
         return $this->type->alias;
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->value;
     }
 }
