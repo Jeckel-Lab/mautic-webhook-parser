@@ -72,33 +72,49 @@ class ContactFactoryTest extends TestCase
         $address1 = $contact->fields->get('address1');
         self::assertInstanceOf(StringField::class, $address1);
         self::assertSame('1 rue du port', $address1->value);
+        /** @phpstan-ignore-next-line */
+        self::assertSame('1 rue du port', $contact->address1);
 
         $attribution = $contact->fields->get('attribution');
         self::assertInstanceOf(IntField::class, $attribution);
         self::assertSame(32, $attribution->value);
+        /** @phpstan-ignore-next-line */
+        self::assertSame(32, $contact->attribution);
 
         $attributionDate = $contact->fields->get('attribution_date');
         self::assertInstanceOf(DateTimeField::class, $attributionDate);
         self::assertSame('2017-06-14 11:30:00', $attributionDate->value->format('Y-m-d H:i:s'));
+        /** @phpstan-ignore-next-line */
+        self::assertSame('2017-06-14 11:30:00', $contact->attribution_date->format('Y-m-d H:i:s'));
 
         $boolean = $contact->fields->get('boolean');
         self::assertInstanceOf(BoolField::class, $boolean);
         self::assertTrue($boolean->value);
+        /** @phpstan-ignore-next-line */
+        self::assertTrue($contact->boolean);
 
         $country = $contact->fields->get('country');
         self::assertInstanceOf(StringField::class, $country);
         self::assertSame('France', $country->value);
+        /** @phpstan-ignore-next-line */
+        self::assertSame('France', $contact->country);
 
         $email = $contact->fields->get('email');
         self::assertInstanceOf(EmailField::class, $email);
         self::assertEquals('john@doe.name', $email->value);
+        /** @phpstan-ignore-next-line */
+        self::assertEquals('john@doe.name', $contact->email);
 
         $multiselect = $contact->fields->get('multiselect');
         self::assertInstanceOf(ArrayField::class, $multiselect);
         self::assertEquals(['php', 'js'], $multiselect->value);
+        /** @phpstan-ignore-next-line */
+        self::assertEquals(['php', 'js'], $contact->multiselect);
 
         $preferredLocale = $contact->fields->get('preferred_locale');
         self::assertInstanceOf(LocaleField::class, $preferredLocale);
         self::assertSame(Locale::from('fr_FR'), $preferredLocale->value);
+        /** @phpstan-ignore-next-line */
+        self::assertSame(Locale::from('fr_FR'), $contact->preferred_locale);
     }
 }

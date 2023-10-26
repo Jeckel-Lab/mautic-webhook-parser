@@ -10,4 +10,5 @@ namespace JeckelLab\MauticWebhookParser\ValueObject\Field;
 interface Field
 {
     public function alias(): string;
+    public function value(): mixed;
 }
