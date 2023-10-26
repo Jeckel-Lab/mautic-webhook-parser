@@ -2,6 +2,7 @@
 
 namespace JeckelLab\MauticWebhookParser\Parser;
 
+use JeckelLab\MauticWebhookParser\Exception\LogicException;
 use JeckelLab\MauticWebhookParser\Factory\FieldTypeFactory;
 use JeckelLab\MauticWebhookParser\ValueObject\Email;
 use JeckelLab\MauticWebhookParser\ValueObject\Field\ArrayField;
@@ -45,7 +46,7 @@ final readonly class FieldParser
             'email' => $this->parseEmailField($fieldData['value'], $fieldType),
             'multiselect' => $this->parseMultiselectField($fieldData['value'], $fieldType),
             'locale' => $this->parseLocaleField($fieldData['value'], $fieldType),
-            default => null
+            default => throw new LogicException(sprintf('Unsupported field type "%s"', $fieldData['type'])),
         };
     }
 

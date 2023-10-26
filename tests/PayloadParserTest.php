@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace JeckelLab\MauticWebhookParser\Tests;
 
-use JeckelLab\MauticWebhookParser\ContactParser;
+use JeckelLab\MauticWebhookParser\Factory\ContactFactory;
 use JeckelLab\MauticWebhookParser\PayloadParser;
 use JeckelLab\MauticWebhookParser\ValueObject\MauticEventType;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ class PayloadParserTest extends TestCase
 {
     public function testItExtractCorrectEvents(): void
     {
-        $parser = new PayloadParser(new ContactParser());
+        $parser = new PayloadParser(new ContactFactory());
         /** @var string $payloadString */
         $payloadString = file_get_contents(__DIR__ . '/fixtures/contact-identified.json');
 

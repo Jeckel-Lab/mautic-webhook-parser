@@ -3,7 +3,7 @@
     "createdBy": 1,
     "createdByUser": "John Doe",
     "dateAdded": "2017-06-19T09:31:18+00:00",
-    "dateIdentified": "2017-06-19T09:31:18+00:00",
+    "dateIdentified": "2017-06-20T09:31:18+00:00",
     "dateModified": null,
     "doNotContact": [],
     "fields": {
@@ -14,7 +14,7 @@
                 "id": 10,
                 "label": "Address Line 1",
                 "type": "text",
-                "value": null
+                "value": "1 rue du port"
             },
             "address2": {
                 "alias": "address2",
@@ -46,7 +46,7 @@
                 "id": 44,
                 "label": "boolean",
                 "type": "boolean",
-                "value": null
+                "value": true
             },
             "city": {
                 "alias": "city",
@@ -70,7 +70,7 @@
                 "id": 15,
                 "label": "Country",
                 "type": "country",
-                "value": "Czech Republic"
+                "value": "France"
             },
             "datetime": {
                 "alias": "datetime",
@@ -158,7 +158,7 @@
                 "id": 16,
                 "label": "Preferred Locale",
                 "type": "locale",
-                "value": "cs_CZ"
+                "value": "fr_FR"
             },
             "state": {
                 "alias": "state",
@@ -277,7 +277,7 @@
         "modifiedByUser": null,
         "username": "admin"
     },
-    "points": 0,
+    "points": 1234,
     "preferredProfileImage": "gravatar",
     "stage": null,
     "tags": [

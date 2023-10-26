@@ -14,6 +14,7 @@ use JeckelLab\MauticWebhookParser\Exception\InvalidArgumentException;
 use JeckelLab\MauticWebhookParser\Identity\ContactId;
 use JeckelLab\MauticWebhookParser\Model\Contact;
 
+use JeckelLab\MauticWebhookParser\Model\FieldCollection;
 use JeckelLab\MauticWebhookParser\Model\User;
 
 use function JeckelLab\MauticWebhookParser\toNullableDateTime;
@@ -27,6 +28,7 @@ class ContactBuilder
     private ?DateTimeImmutable $dateAdded = null;
     private ?DateTimeImmutable $dateIdentified = null;
     private ?DateTimeImmutable $dateModified = null;
+    private ?FieldCollection $fields = null;
 
     public function __construct()
     {
@@ -42,6 +44,7 @@ class ContactBuilder
         $this->dateAdded = null;
         $this->dateIdentified = null;
         $this->dateModified = null;
+        $this->fields = null;
         return $this;
     }
 
@@ -80,6 +83,12 @@ class ContactBuilder
         return $this;
     }
 
+    public function withFields(FieldCollection $fields): self
+    {
+        $this->fields = $fields;
+        return $this;
+    }
+
     public function build(): Contact
     {
         $result = new Contact(
@@ -90,6 +99,7 @@ class ContactBuilder
             isPublished: $this->isPublished,
             owner: $this->owner,
             points: $this->points,
+            fields: $this->fields ?? new FieldCollection([])
         );
         $this->reset();
         return $result;

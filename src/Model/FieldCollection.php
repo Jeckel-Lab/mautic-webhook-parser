@@ -24,6 +24,14 @@ readonly class FieldCollection implements Countable
         return $this->fields[$name] ?? null;
     }
 
+    /**
+     * @return string[]
+     */
+    public function getAliases(): array
+    {
+        return array_keys($this->fields);
+    }
+
     public function count(): int
     {
         return count($this->fields);

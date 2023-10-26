@@ -22,13 +22,15 @@ class FieldCollectionFactoryTest extends TestCase
     public function testFactoryWithSingleFieldShouldReturnCollection(): void
     {
         $data = [
-            'address1' => [
-                'alias' => 'address1',
-                'group' => 'core',
-                'id' => 10,
-                'label' => 'Address Line 1',
-                'type' => 'text',
-                'value' => '1 rue du port'
+            'core' => [
+                'address1' => [
+                    'alias' => 'address1',
+                    'group' => 'core',
+                    'id' => 10,
+                    'label' => 'Address Line 1',
+                    'type' => 'text',
+                    'value' => '1 rue du port'
+                ]
             ]
         ];
         $collection = (new FieldCollectionFactory())->constructFromJson($data);
@@ -45,13 +47,15 @@ class FieldCollectionFactoryTest extends TestCase
     public function testFactoryWithSingleLocalFieldShouldReturnCollection(): void
     {
         $data = [
-            'preferred_locale' => [
-                'alias' => 'preferred_locale',
-                'group' => 'core',
-                'id' => 16,
-                'label' => 'Preferred Locale',
-                'type' => 'locale',
-                'value' => 'fr_FR'
+            'core' => [
+                'preferred_locale' => [
+                    'alias' => 'preferred_locale',
+                    'group' => 'core',
+                    'id' => 16,
+                    'label' => 'Preferred Locale',
+                    'type' => 'locale',
+                    'value' => 'fr_FR'
+                ]
             ]
         ];
         $collection = (new FieldCollectionFactory())->constructFromJson($data);
@@ -70,21 +74,25 @@ class FieldCollectionFactoryTest extends TestCase
     public function testFactoryWithMultipleFieldsShouldReturnCollection(): void
     {
         $data = [
-            'address1' => [
-                'alias' => 'address1',
-                'group' => 'core',
-                'id' => 10,
-                'label' => 'Address Line 1',
-                'type' => 'text',
-                'value' => '1 rue du port'
+            'core' =>  [
+                'address1' => [
+                    'alias' => 'address1',
+                    'group' => 'core',
+                    'id' => 10,
+                    'label' => 'Address Line 1',
+                    'type' => 'text',
+                    'value' => '1 rue du port'
+                ]
             ],
-            'preferred_locale' => [
-                'alias' => 'preferred_locale',
-                'group' => 'core',
-                'id' => 16,
-                'label' => 'Preferred Locale',
-                'type' => 'locale',
-                'value' => 'fr_FR'
+            'social' => [
+                'preferred_locale' => [
+                    'alias' => 'preferred_locale',
+                    'group' => 'social',
+                    'id' => 16,
+                    'label' => 'Preferred Locale',
+                    'type' => 'locale',
+                    'value' => 'fr_FR'
+                ]
             ]
         ];
 
@@ -102,7 +110,7 @@ class FieldCollectionFactoryTest extends TestCase
         $field = $collection->get('preferred_locale');
         self::assertInstanceOf(LocaleField::class, $field);
         self::assertSame('preferred_locale', $field->alias);
-        self::assertSame(FieldTypeGroup::CORE, $field->group);
+        self::assertSame(FieldTypeGroup::SOCIAL, $field->group);
         self::assertSame(FieldTypeId::from(16), $field->id);
         self::assertSame('Preferred Locale', $field->label);
         self::assertSame('fr_FR', (string) $field->value);

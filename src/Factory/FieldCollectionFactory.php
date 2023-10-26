@@ -33,13 +33,21 @@ class FieldCollectionFactory
     public function constructFromJson(array $jsonData): FieldCollection
     {
         $this->fieldCollectionBuilder->reset();
-        /** @var array{alias: string, group: string, id: int, label: string, type: string, value: mixed} $fieldData */
-        foreach ($jsonData as $fieldData) {
-            $field = $this->fieldParser->parseFieldValue($fieldData);
-            if (null === $field) {
+        foreach ($jsonData as $fields) {
+            if (! is_array($fields)) {
                 continue;
             }
-            $this->fieldCollectionBuilder->withField($field);
+            foreach ($fields as $fieldData) {
+                if (! is_array($fieldData)) {
+                    continue;
+                }
+                /** @var array{alias: string, group: string, id: int, label: string, type: string, value: mixed} $fieldData */
+                $field = $this->fieldParser->parseFieldValue($fieldData);
+                if (null === $field) {
+                    continue;
+                }
+                $this->fieldCollectionBuilder->withField($field);
+            }
         }
         return $this->fieldCollectionBuilder->build();
     }
