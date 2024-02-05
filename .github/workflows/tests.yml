@@ -90,7 +90,7 @@ jobs:
       - name: Run Roave Security Checker
         run: composer update --dry-run roave/security-advisories
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           files: ./coverage.xml
